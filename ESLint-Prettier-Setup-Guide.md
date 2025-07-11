@@ -7,6 +7,13 @@ This guide helps you configure **ESLint v9+ (flat config)**, **Prettier**, and o
 
 ---
 
+```bash
+# Version: Node.js 18 LTS hoặc 20 LTS
+# Sử dụng nvm
+nvm install 18
+nvm use 18
+```
+
 ## 1. 📦 Install Dependencies
 
 Install ESLint 9+, Prettier, and required plugins:
@@ -22,9 +29,17 @@ npm install -D \
   prettier \
   @typescript-eslint/parser \
   vue-eslint-parser
+```
 
-# Format on commit
-npm install -D husky lint-staged
+```js
+// Purpose of each package:
+- `eslint`: Core linting engine
+- `@nuxtjs/eslint-config-typescript`: ESLint config cho Nuxt + TypeScript
+- `prettier`: Code formatter
+- `eslint-plugin-prettier`: Chạy Prettier như ESLint rule
+- `eslint-config-prettier`: Tắt ESLint rules conflicts với Prettier
+- `eslint-plugin-vue`: Vue.js specific linting rules
+- `eslint-plugin-nuxt`: Nuxt.js specific linting rules
 ```
 
 ## 2. ✅ ESLint Configuration
@@ -50,10 +65,17 @@ Highlights:
 
 ## 5. 🪝 (Optional) Git Hooks with Husky
 
+- To auto format code before committing:
+
 ```bash
+# Cài đặt husky và lint-staged
 npm install -D husky lint-staged
-npx husky install
-npx husky add .husky/pre-commit "npx lint-staged"
+
+# Khởi tạo husky
+npx husky init
+
+# Tạo pre-commit hook
+echo "npx lint-staged" > .husky/pre-commit
 ```
 
 ```json
@@ -62,11 +84,11 @@ npx husky add .husky/pre-commit "npx lint-staged"
 }
 ```
 
-### Workflow
+### 🔮 Workflow
 
 ```bash
-
 # Development
+
 npm run dev
 #### Lint code
 npm run lint
@@ -78,9 +100,9 @@ npm run format
 
 
 # Before Commit
-bash# Check lint
-npm run lint
 
+#### Check lint
+npm run lint
 #### Check format
 npm run format:check
 #### Type check
