@@ -10,8 +10,8 @@ This guide helps you configure **ESLint v9+ (flat config)**, **Prettier**, and o
 ```bash
 # Version: Node.js 18 LTS hoặc 20 LTS
 # Sử dụng nvm
-nvm install 18
-nvm use 18
+nvm install 20
+nvm use 20
 ```
 
 ## 1. 📦 Install Dependencies
@@ -31,7 +31,7 @@ npm install -D \
   vue-eslint-parser
 ```
 
-```js
+```ts
 // Purpose of each package:
 - `eslint`: Core linting engine
 - `@nuxtjs/eslint-config-typescript`: ESLint config cho Nuxt + TypeScript
